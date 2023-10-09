@@ -1,52 +1,95 @@
 <template>
     <h1>MAKE A REVIEW</h1>
-    <NavVue />
-    <p><input v-model="review.name" type="text" placeholder="Anime title"><br></p>
-    <p><input v-model="review.date" type="text" name="date" placeholder="Today's Date"></p>
-    <p><input v-model="review.rating" type="text" placeholder="Anime Rating 1-5"><br></p>
+    <select v-model="review.animeId">
+    <option v-for="anime in animes" :value="anime._id" :key="anime._id">{{ anime.name }}</option>
+</select>
+    <div class="star-rating">
+  <span v-for="star in 5" :key="star" @click="setRating(star)" :class="{ 'filled': star <= review.rating }">&#9733;</span>
+</div>
     <p><input v-model="review.text" type="text" placeholder="Your Thoughts"><br></p>
     <p><button v-on:click="saveReview">Save Review</button></p>
 </template>
 
 <script>
-import NavVue from '../components/Nav.vue'
-        export default {
-        name: 'MakeReviewVue',
-        data: () => ({
+export default {
+    name: 'MakeReviewVue',
+    data() {
+        return {
             error: '',
             review: {
-            name: '',
-            date:'',
-            rating:'',
-            text: ''
+                animeId: '',
+                date: '',
+                rating: 0,
+                text: ''
+            },
+            animes: []
         }
-        }),
-        methods: {
-        saveReview: function () {
+    },
+    created() {
+        this.fetchAnimeTitles();
+    },
+    methods: {
+        fetchAnimeTitles() {
+            fetch('http://localhost:4000/anime')
+                .then(res => res.json())
+                .then(data => {
+                    this.animes = data;
+                })
+                .catch(error => console.error('Error:', error));
+        },
+        setRating(star) {
+        this.review.rating = star;
+        },
+            saveReview() {
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+            const formattedDate = new Date().toLocaleDateString(undefined, options);
+            this.review.date = formattedDate;
+
             console.log(`New Review ${this.review.name} - ${this.review.date} - ${this.review.rating} - ${this.review.text}`);
-            fetch('http://localhost:4000/addAnime', {
+            console.log(this.userEmail);
+            fetch(`http://localhost:4000/addReview`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    name: this.review.name,
+                    animeId: this.review.animeId,
                     date: this.review.date,
                     rating: this.review.rating,
-                    text: this.review.text
+                    text: this.review.text,
+                    email: this.$userEmail
                 })
             })
             .then(res => {
-                console.log(res.status)
-                this.review.name = ''
-                this.review.date = ''
-                this.review.rating = ''
-                this.review.text = ''
+                console.log(res.status);
+                this.review.name = '';
+                this.review.date = '';
+                this.review.rating = '';
+                this.review.text = '';
             })
+            .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        this.userEmail = result.userEmail
+      })
+      .catch((error) => {
+        this.error = 'Error fetching data: ' + error;
+      });
         }
     },
-        components: {
-            NavVue
-        }
-    }
+}
 </script>
+
+<style>
+.star-rating {
+  font-size: 24px;
+}
+
+.star-rating span {
+  cursor: pointer;
+}
+
+.star-rating span.filled {
+  color: gold; 
+}
+</style>

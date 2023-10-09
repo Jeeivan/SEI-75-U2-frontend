@@ -1,6 +1,6 @@
 <template>
     <h1>ANIMES</h1>
-    <NavVue />
+    <!-- <NavVue /> -->
     <div>
         <div v-for='anime in animes' :key="anime._id">
             <p><router-link :to="'/anime/' + anime._id" ><h1>{{ anime.name }}</h1></router-link></p></div>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NavVue from '../components/Nav.vue'
+// import NavVue from '../components/Nav.vue'
 export default {
     name: 'AnimeVue',
     data: () => ({
@@ -26,8 +26,8 @@ export default {
             });
     },
     methods: {},
-    components: {
-    NavVue
-}
+//     components: {
+//     NavVue
+// }
 };
 </script>

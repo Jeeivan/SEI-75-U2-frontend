@@ -1,19 +1,17 @@
 <template>
     <h1>REVIEWS</h1>
-    <NavVue />
     <div>
     <div v-for='review in reviews' :key="review._id">
-            <h1>Anime Title-{{ review.name }}</h1>
-            <h1>Date of Review-{{ review.date }}</h1>
-            <h1>Rating-{{ review.rating }}</h1>
-            <h1>Thoughts-{{ review.text }}</h1>
+            <h1>Anime Title - {{ review.title.name }}</h1>
+            <h1>Date of Review - {{ review.date }}</h1>
+            <h1>Rating - {{ review.rating }}/5</h1>
+            <h1>Thoughts - {{ review.text }}</h1>
             <br>
         </div>
     </div>
 </template>
 
 <script>
-import NavVue from '../components/Nav.vue'
 export default {
     name: 'ReviewVue',
     data: () => ({
@@ -31,8 +29,5 @@ export default {
             });
     },
     methods: {},
-    components: {
-    NavVue
-}
 };
 </script>

@@ -4,12 +4,19 @@ import Anime from '../components/Anime'
 import Review from '../components/Reviews'
 import MakeReview from '../components/MakeReview'
 import SingleAnime from '../components/SingleAnime'
+import EditReview from '../components/EditReview'
+import Login from '../components/Login'
 
 const routes = [
     {
         name: 'Home',
-        path: '/',
+        path: '/nav',
         component: Home
+    },
+    {
+        name: 'Login',
+        path: '/',
+        component: Login
     },
     {
         name: 'Anime',
@@ -30,6 +37,11 @@ const routes = [
         name: 'MakeReview',
         path: '/reviews/create',
         component: MakeReview
+    },
+    {
+        name: 'EditReview',
+        path: '/reviews/edit',
+        component: EditReview
     },
 ]
 

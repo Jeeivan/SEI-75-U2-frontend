@@ -1,13 +1,32 @@
 <template>
+  <NavVue />
   <main>
     <router-view :key="$route.path" />
   </main>
 </template>
 
 <script>
-
+import NavVue from './components/Nav.vue'
+  import { decodeCredential } from 'vue3-google-login';
 export default {
-  name: 'App'
+  name: 'App',
+  data: () => ({
+            isInit: false,
+            isLoggedIn: false,
+            userName: '',
+            userEmail: ''
+        }),
+  mounted() {
+      if (this.$cookies.isKey('user_session')) {
+        this.isLoggedIn = true;
+        const userData = decodeCredential(this.$cookies.get('user_session'));
+        this.userName = userData.given_name;
+        this.userEmail = userData.email
+      }
+    },
+    components: {
+    NavVue
+}
 }
 </script>
 

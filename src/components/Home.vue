@@ -1,16 +1,18 @@
 <template>
-    <h1>EverythingAnime</h1>
+    <!-- <h1>EverythingAnime</h1>
     <p><button><router-link :to="'/anime'" >Animes</router-link></button></p>
     <p><button><router-link :to="'/reviews'" >Reviews</router-link></button></p>
-    <p><button><router-link :to="'/reviews/create'" >Create a Review</router-link></button></p>
     <div v-if="isLoggedIn">
-        <h2>Hello {{ userName }}</h2>
-        <button class="btn btn-primary" @click="handleLogOut">Log Out</button>
+      <p><button><router-link :to="'/reviews/create'" >Create a Review</router-link></button></p>
+      <h2>Hello {{ userName }}</h2>
+      <button class="btn btn-primary" @click="handleLogOut">Log Out</button>
     </div>
     <div v-else>
-        <GoogleLogin :callback="callback" />
-    </div>
-</template>
+      <GoogleLogin :callback="callback" />
+    </div> -->
+    <p></p>
+  </template>
+  
 
 <script>
 import { decodeCredential, googleLogout } from 'vue3-google-login'
