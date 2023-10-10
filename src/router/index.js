@@ -5,7 +5,7 @@ import Review from '../components/Reviews'
 import MakeReview from '../components/MakeReview'
 import SingleAnime from '../components/SingleAnime'
 import EditReview from '../components/EditReview'
-import Login from '../components/Login'
+import Login from '../components/Home'
 
 const routes = [
     {
@@ -40,7 +40,7 @@ const routes = [
     },
     {
         name: 'EditReview',
-        path: '/reviews/edit',
+        path: '/review/edit/:id',
         component: EditReview
     },
 ]

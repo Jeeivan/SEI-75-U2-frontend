@@ -1,14 +1,32 @@
 <template>
-        <h1>EverythingAnime</h1>
+    <div class="container">
+    <h1>EverythingAnime</h1>
     <nav>
-        <p><button><router-link :to="'/'" >Home</router-link></button></p>
-        <p><button><router-link :to="'/anime'" >Animes</router-link></button></p>
-        <p><button><router-link :to="'/reviews'" >Reviews</router-link></button></p>
-        <div v-if="isLoggedIn">
-      <p><button><router-link :to="'/reviews/create'" >Create a Review</router-link></button></p>
+      <p>
+        <button class="nav-button">
+          <router-link :to="'/'" class="nav-link">Home</router-link>
+        </button>
+      </p>
+      <p>
+        <button class="nav-button">
+          <router-link :to="'/anime'" class="nav-link">Animes</router-link>
+        </button>
+      </p>
+      <p>
+        <button class="nav-button">
+          <router-link :to="'/reviews'" class="nav-link">Reviews</router-link>
+        </button>
+      </p>
+      <div v-if="isLoggedIn">
+        <p>
+          <button class="nav-button">
+            <router-link :to="'/reviews/create'" class="nav-link">Create a Review</router-link>
+          </button>
+        </p>
       </div>
     </nav>
-</template>
+    </div>
+  </template>
 
 <script>
 import { decodeCredential } from 'vue3-google-login';
@@ -30,9 +48,36 @@ import { decodeCredential } from 'vue3-google-login';
 </script>
 
 <style>
-    nav {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+    .container {
+        background-color: lightcyan;
     }
+
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .nav-button {
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #ff7b00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .nav-button:hover {
+  background-color: lightsalmon;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+  }
 </style>

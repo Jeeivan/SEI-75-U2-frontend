@@ -1,4 +1,7 @@
 <template>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  </head>
   <NavVue />
   <main>
     <router-view :key="$route.path" />
@@ -38,5 +41,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+* {
+  font-family: 'Bangers', cursive;
+}
+
+body {
+  background-color: lightcyan;
 }
 </style>

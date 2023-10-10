@@ -1,17 +1,18 @@
 <template>
-    <!-- <h1>EverythingAnime</h1>
-    <p><button><router-link :to="'/anime'" >Animes</router-link></button></p>
-    <p><button><router-link :to="'/reviews'" >Reviews</router-link></button></p>
-    <div v-if="isLoggedIn">
-      <p><button><router-link :to="'/reviews/create'" >Create a Review</router-link></button></p>
-      <h2>Hello {{ userName }}</h2>
-      <button class="btn btn-primary" @click="handleLogOut">Log Out</button>
+    <div class="home-page">
+      <h1 class="page-title">Welcome to EverythingAnime!</h1>
+      <p class="subtitle">Explore a world of anime and share your thoughts with the community.</p>
+      <img src="https://i.pinimg.com/originals/9b/ee/e5/9beee5ce7fb9623cb34f08b16b2ba363.jpg" alt="Anime Background" class="background-image" />
+      <div v-if="isLoggedIn">
+        <h2 class="welcome-message">Hello {{ userName }}!</h2>
+        <button class="logout-button" @click="handleLogOut">Log Out</button>
+      </div>
+      <div v-else>
+        <GoogleLogin :callback="callback" class="google-login" />
+      </div>
     </div>
-    <div v-else>
-      <GoogleLogin :callback="callback" />
-    </div> -->
-    <p></p>
   </template>
+  
   
 
 <script>
@@ -60,3 +61,68 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
     }
     }
 </script>
+
+<style scoped>
+.background-image {
+    max-width: 300px;
+}
+.home-page {
+  text-align: center;
+  margin-top: 50px;
+  background-color: lightcyan ;
+}
+
+.page-title {
+  font-size: 48px;
+  color: #ff7b00;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.create-review-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ff7b00;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.create-review-button:hover {
+  background-color: #ff6a00;
+}
+
+.welcome-message {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ff7b00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #ff6a00;
+}
+
+.google-login {
+  margin-top: 20px;
+}
+
+</style>

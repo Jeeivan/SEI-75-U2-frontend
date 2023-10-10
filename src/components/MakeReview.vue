@@ -6,11 +6,13 @@
     <div class="star-rating">
   <span v-for="star in 5" :key="star" @click="setRating(star)" :class="{ 'filled': star <= review.rating }">&#9733;</span>
 </div>
-    <p><input v-model="review.text" type="text" placeholder="Your Thoughts"><br></p>
+    <p><textarea v-model="review.text" type="text" placeholder="Your Thoughts" class="larger-input"></textarea><br></p>
     <p><button v-on:click="saveReview">Save Review</button></p>
 </template>
 
 <script>
+  import { decodeCredential } from 'vue3-google-login';
+
 export default {
     name: 'MakeReviewVue',
     data() {
@@ -22,11 +24,24 @@ export default {
                 rating: 0,
                 text: ''
             },
-            animes: []
+            animes: [],
+            userId: '',
+            isInit: false,
+            isLoggedIn: false,
+            userName: '',
+            userEmail: ''
         }
     },
     created() {
         this.fetchAnimeTitles();
+    },
+    mounted() {
+      if (this.$cookies.isKey('user_session')) {
+        this.isLoggedIn = true;
+        const userData = decodeCredential(this.$cookies.get('user_session'));
+        this.userName = userData.given_name;
+        this.userEmail = userData.email
+      }
     },
     methods: {
         fetchAnimeTitles() {
@@ -57,7 +72,7 @@ export default {
                     date: this.review.date,
                     rating: this.review.rating,
                     text: this.review.text,
-                    email: this.$userEmail
+                    email: this.userEmail
                 })
             })
             .then(res => {
@@ -69,8 +84,8 @@ export default {
             })
             .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        this.userEmail = result.userEmail
+        console.log(result)
+        this.userId = result.userId
       })
       .catch((error) => {
         this.error = 'Error fetching data: ' + error;
@@ -91,5 +106,10 @@ export default {
 
 .star-rating span.filled {
   color: gold; 
+}
+
+.larger-input {
+  width: 300px; 
+  height: 100px; 
 }
 </style>
