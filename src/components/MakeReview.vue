@@ -1,4 +1,5 @@
 <template>
+    <div class="review-container">
     <h1>MAKE A REVIEW</h1>
     <select v-model="review.animeId">
     <option v-for="anime in animes" :value="anime._id" :key="anime._id">{{ anime.name }}</option>
@@ -8,6 +9,7 @@
 </div>
     <p><textarea v-model="review.text" type="text" placeholder="Your Thoughts" class="larger-input"></textarea><br></p>
     <p><button v-on:click="saveReview">Save Review</button></p>
+</div>
 </template>
 
 <script>
@@ -95,7 +97,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .star-rating {
   font-size: 24px;
 }
@@ -112,4 +114,35 @@ export default {
   width: 300px; 
   height: 100px; 
 }
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.review-container > * {
+  margin-bottom: 15px;
+}
+
+.review-container button {
+  background-color: #ff7b00; /* Change to your preferred button color */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.review-container button:hover {
+  background-color: lightsalmon; /* Change to your preferred hover color */
+}
+
+.review-container h1 {
+    color: #ff7b00;
+}
+
 </style>

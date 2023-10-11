@@ -2,14 +2,14 @@
     <div class="home-page">
       <h1 class="page-title">Welcome to EverythingAnime!</h1>
       <p class="subtitle">Explore a world of anime and share your thoughts with the community.</p>
-      <img src="https://i.pinimg.com/originals/9b/ee/e5/9beee5ce7fb9623cb34f08b16b2ba363.jpg" alt="Anime Background" class="background-image" />
       <div v-if="isLoggedIn">
         <h2 class="welcome-message">Hello {{ userName }}!</h2>
         <button class="logout-button" @click="handleLogOut">Log Out</button>
-      </div>
-      <div v-else>
+    </div>
+    <div v-else>
         <GoogleLogin :callback="callback" class="google-login" />
-      </div>
+    </div>
+    <img src="https://i.pinimg.com/originals/9b/ee/e5/9beee5ce7fb9623cb34f08b16b2ba363.jpg" alt="Anime Background" class="background-image" />
     </div>
   </template>
   
@@ -40,6 +40,7 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
             console.log(userData); // userData is the value being given
             this.userName = userData.given_name
             this.$cookies.set('user_session', response.credential) // This creates a global cookie
+            location.reload()
             fetch('http://localhost:4000/user/login', {
                 method: 'POST',
                 headers: {
@@ -57,6 +58,7 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
             googleLogout()
             this.$cookies.remove('user_session') // user_session is name of cookie
             this.isLoggedIn = false
+            location.reload()
         }
     }
     }
@@ -69,7 +71,7 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
 .home-page {
   text-align: center;
   margin-top: 50px;
-  background-color: lightcyan ;
+  background-color: beige; ;
 }
 
 .page-title {

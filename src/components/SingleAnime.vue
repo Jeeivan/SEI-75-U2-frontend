@@ -131,7 +131,7 @@
   .review-box {
     max-width: 500px;
     width: 100%;
-    background-color: #fff;
+    background-color: beige;
     border: 2px solid #ff7b00;
     border-radius: 10px;
     padding: 20px;

@@ -10,7 +10,8 @@
       </div>
       <div class="reviews-container">
         <div v-for='review in filteredReviews' :key="review._id" class="review-box">
-          <h2 class="anime-title">Anime Title - {{ review.title.name }}</h2>
+            <p class="review-user">{{ review.user }}</p>  
+          <h2 class="anime-title"><router-link :to="'/anime/' + review.title._id"> {{ review.title.name }}</router-link></h2>
           <p class="review-detail">Date of Review - {{ review.date }}</p>
           <p class="review-detail">Rating - {{ review.rating }}/5</p>
           <p class="review-detail">Thoughts - <span class="larger-text">{{ review.text }}</span></p>
@@ -91,7 +92,7 @@
   .review-box {
     max-width: 500px;
     width: 100%;
-    background-color: #fff;
+    background-color: beige;
     border: 2px solid #ff7b00;
     border-radius: 10px;
     padding: 20px;

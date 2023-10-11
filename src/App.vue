@@ -45,9 +45,10 @@ export default {
 
 * {
   font-family: 'Bangers', cursive;
+  background-color: beige;
 }
 
 body {
-  background-color: lightcyan;
+  background-color: #f5f5f5;
 }
 </style>

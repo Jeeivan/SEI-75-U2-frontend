@@ -1,6 +1,6 @@
 <template>
     <h1>Edit REVIEW</h1>
-    <p><input v-model="review.text" type="text" placeholder="Your Thoughts" class="larger-input"><br></p>
+    <p><textarea v-model="review.text" type="text" placeholder="Your Thoughts" class="larger-input"></textarea><br></p>
     <p><button v-on:click="saveReview">Save Review</button></p>
 </template>
   

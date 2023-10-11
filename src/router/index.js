@@ -6,6 +6,7 @@ import MakeReview from '../components/MakeReview'
 import SingleAnime from '../components/SingleAnime'
 import EditReview from '../components/EditReview'
 import Login from '../components/Home'
+import AnimeAPI from '../components/AnimeAPI'
 
 const routes = [
     {
@@ -43,6 +44,11 @@ const routes = [
         path: '/review/edit/:id',
         component: EditReview
     },
+    {
+        name: 'AnimeAPI',
+        path: '/anime/api',
+        component: AnimeAPI
+    }
 ]
 
 const router = createRouter({

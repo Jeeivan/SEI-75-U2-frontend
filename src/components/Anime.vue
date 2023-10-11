@@ -37,8 +37,8 @@
   
   <style scoped>
   .anime-list {
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin: 0 auto; /* Center the container */
+    max-width: 1200px;
+    margin: 0 auto; 
     padding: 20px;
   }
   
@@ -52,11 +52,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Center the cards */
+    justify-content: center; 
   }
   
   .anime-card {
-    flex: 0 0 calc(20% - 20px); /* Adjusted width calculation */
+    flex: 0 0 calc(20% - 20px);
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;

@@ -17,6 +17,11 @@
           <router-link :to="'/reviews'" class="nav-link">Reviews</router-link>
         </button>
       </p>
+      <p>
+        <button class="nav-button">
+          <router-link :to="'/anime/api'" class="nav-link">Anime News</router-link>
+        </button>
+      </p>
       <div v-if="isLoggedIn">
         <p>
           <button class="nav-button">
@@ -49,7 +54,7 @@ import { decodeCredential } from 'vue3-google-login';
 
 <style>
     .container {
-        background-color: lightcyan;
+        background-color: beige;
     }
 
   nav {
@@ -79,5 +84,10 @@ import { decodeCredential } from 'vue3-google-login';
   .nav-link {
     text-decoration: none;
     color: inherit;
+  }
+
+  .container h1 {
+    color: #ff7b00;
+    margin-bottom: 20px;
   }
 </style>
