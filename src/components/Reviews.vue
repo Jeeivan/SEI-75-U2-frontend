@@ -10,7 +10,10 @@
       </div>
       <div class="reviews-container">
         <div v-for='review in filteredReviews' :key="review._id" class="review-box">
-            <p class="review-user">{{ review.user }}</p>  
+            <div class="user">    
+            <img :src="review.image" alt="">
+            <p>Made By- {{ review.name }}</p>
+        </div>    
           <h2 class="anime-title"><router-link :to="'/anime/' + review.title._id"> {{ review.title.name }}</router-link></h2>
           <p class="review-detail">Date of Review - {{ review.date }}</p>
           <p class="review-detail">Rating - {{ review.rating }}/5</p>
@@ -53,11 +56,11 @@
   <style scoped>
   .anime-reviews {
     text-align: center;
+    margin-top: 25px;
   }
   
   .page-title {
     font-size: 36px;
-    color: #ff7b00;
     margin-bottom: 20px;
   }
   
@@ -113,6 +116,15 @@
   
   .larger-text {
     font-size: 20px;
+  }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .user img {
+    height: 30px;
   }
   </style>
   

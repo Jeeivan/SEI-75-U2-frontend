@@ -7,6 +7,7 @@ import SingleAnime from '../components/SingleAnime'
 import EditReview from '../components/EditReview'
 import Login from '../components/Home'
 import AnimeAPI from '../components/AnimeAPI'
+import AddAnime from '../components/AddAnime'
 
 const routes = [
     {
@@ -48,6 +49,11 @@ const routes = [
         name: 'AnimeAPI',
         path: '/anime/api',
         component: AnimeAPI
+    },
+    {
+        name: 'AddAnime',
+        path: '/anime/add',
+        component: AddAnime
     }
 ]
 

@@ -44,7 +44,6 @@
   
   .page-title {
     font-size: 36px;
-    color: #ff7b00;
     margin-bottom: 20px;
   }
   

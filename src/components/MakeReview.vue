@@ -1,7 +1,7 @@
 <template>
     <div class="review-container">
     <h1>MAKE A REVIEW</h1>
-    <select v-model="review.animeId">
+    <select v-model="review.animeId" style="width: 300px; height: 30px; font-size: 20px;">
     <option v-for="anime in animes" :value="anime._id" :key="anime._id">{{ anime.name }}</option>
 </select>
     <div class="star-rating">
@@ -31,7 +31,8 @@ export default {
             isInit: false,
             isLoggedIn: false,
             userName: '',
-            userEmail: ''
+            userEmail: '',
+            userImage: ''
         }
     },
     created() {
@@ -41,8 +42,10 @@ export default {
       if (this.$cookies.isKey('user_session')) {
         this.isLoggedIn = true;
         const userData = decodeCredential(this.$cookies.get('user_session'));
+        console.log(userData);
         this.userName = userData.given_name;
         this.userEmail = userData.email
+        this.userImage = userData.picture
       }
     },
     methods: {
@@ -74,7 +77,9 @@ export default {
                     date: this.review.date,
                     rating: this.review.rating,
                     text: this.review.text,
-                    email: this.userEmail
+                    email: this.userEmail,
+                    image: this.userImage,
+                    name: this.userName
                 })
             })
             .then(res => {
@@ -128,7 +133,7 @@ export default {
 }
 
 .review-container button {
-  background-color: #ff7b00; /* Change to your preferred button color */
+  background-color: #ff7b00; 
   color: #FFFFFF;
   border: none;
   padding: 10px 20px;
@@ -138,11 +143,12 @@ export default {
 }
 
 .review-container button:hover {
-  background-color: lightsalmon; /* Change to your preferred hover color */
+  background-color: lightsalmon;
 }
 
-.review-container h1 {
-    color: #ff7b00;
+.larger-input {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 </style>

@@ -17,7 +17,8 @@ export default {
             isInit: false,
             isLoggedIn: false,
             userName: '',
-            userEmail: ''
+            userEmail: '',
+            userImage: ''
         }),
   mounted() {
       if (this.$cookies.isKey('user_session')) {
@@ -25,6 +26,7 @@ export default {
         const userData = decodeCredential(this.$cookies.get('user_session'));
         this.userName = userData.given_name;
         this.userEmail = userData.email
+        this.userImage = userData.picture
       }
     },
     components: {

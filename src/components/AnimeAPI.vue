@@ -57,6 +57,7 @@
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: auto;
+    margin-top: 25px;
   }
   
   .error-message {

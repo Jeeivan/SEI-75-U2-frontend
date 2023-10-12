@@ -1,19 +1,24 @@
 <template>
   <div class="single-anime-container">
     <div class="anime-details">
-      <img :src="animes?.anime?.imageURL" alt="An image" class="anime-image">
+      <img :src="animes?.anime?.imageURL" alt="No image found" class="anime-image">
       <div class="anime-info">
         <h1>{{ animes?.anime?.name }}</h1>
         <p class="anime-description">{{ animes?.anime?.description }}</p>
       </div>
     </div>
+    <button @click="toggleReviews">
+    {{ showReviews ? 'Hide Reviews' : 'Show Reviews' }}
+  </button>
 
-  
-      <div class="anime-reviews">
+<div v-if="showReviews" class="anime-reviews">
     <div class="reviews-container">
-      <h2>Reviews</h2>
       <div v-for="review in reviews" :key="review._id" class="review-box">
         <div class="review-details">
+        <div class="user">    
+            <img :src="review.image" alt="">
+            <p>Made By- {{ review.name }}</p>
+        </div>    
           <p>Date of Review - {{ review.date }}</p>
           <p>Rating - {{ review.rating }}/5</p>
           <p>Thoughts - {{ review.text }}</p>
@@ -43,7 +48,8 @@
           isInit: false,
           isLoggedIn: false,
           userName: '',
-          userEmail: ''
+          userEmail: '',
+          showReviews: false
       }),
       mounted() {
           const route = useRoute()
@@ -65,6 +71,9 @@
               })
       },
       methods: {
+        toggleReviews() {
+      this.showReviews = !this.showReviews;
+    },
           fetchReviews() {
               fetch(`http://localhost:4000/${this.id}/reviews`)
                   .then((response) => response.json())
@@ -119,6 +128,7 @@
   
   .anime-reviews {
     text-align: center;
+    margin-top: 40px;
   }
   
   .reviews-container {
@@ -159,5 +169,34 @@
   .review-actions button:hover {
     background-color: #ff6a00;
   }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .user img {
+    height: 30px;
+  }
+
+  .single-anime-container {
+    margin-top: 25px;
+  }
+
+  .single-anime-container button {
+    padding: 8px 16px;
+    margin: 5px;
+    font-size: 20px;
+    background-color: #ff7b00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .single-anime-container button:hover {
+    background-color: lightsalmon;
+  }
+
   </style>
   
