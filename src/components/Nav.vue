@@ -31,6 +31,7 @@
         { text: 'Animes', link: '/anime', icon: '📺' },
         { text: 'Reviews', link: '/reviews', icon: '📝' },
         { text: 'Anime News', link: '/anime/api', icon: '📰' },
+        { text: 'Profiles', link: '/profiles', icon: '👨🏾' },
         { text: 'Create a Review', link: '/reviews/create', icon: '➕' },
         { text: 'Add an Anime', link: '/anime/add', icon: '➕' },
       ]
@@ -85,6 +86,7 @@
   
   .icon {
     margin-right: 8px;
+    border-radius: 25%;
   }
   
   .profile-container {

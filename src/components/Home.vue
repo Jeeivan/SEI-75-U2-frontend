@@ -38,6 +38,7 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
             this.isLoggedIn = true
             const userData = decodeCredential(response.credential)
             console.log(userData); // userData is the value being given
+            console.log(userData.picture);
             this.userName = userData.given_name
             this.$cookies.set('user_session', response.credential) // This creates a global cookie
             location.reload()
@@ -47,7 +48,9 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email: userData.email
+                    email: userData.email,
+                    name: userData.given_name,
+                    img: userData.picture
                 })
             })
             .then(() => {
@@ -67,11 +70,12 @@ import { decodeCredential, googleLogout } from 'vue3-google-login'
 <style scoped>
 .background-image {
     max-width: 300px;
+    margin: 30px;
 }
 .home-page {
   text-align: center;
   margin-top: 50px;
-  background-color: beige; ;
+  background-color: beige; 
 }
 
 .page-title {

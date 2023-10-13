@@ -1,7 +1,9 @@
 <template>
+    <div class="edit-container">
     <h1>Edit REVIEW</h1>
     <p><textarea v-model="review.text" type="text" placeholder="Your Thoughts" class="larger-input"></textarea><br></p>
     <p><button v-on:click="saveReview">Save Review</button></p>
+    </div>  
 </template>
   
   <script>
@@ -52,3 +54,15 @@ mounted() {
   }
   </script>
   
+<style scoped>
+
+.larger-input {
+  width: 300px; 
+  height: 100px; 
+}
+
+.edit-container {
+    margin-top: 25px;
+}
+
+</style>

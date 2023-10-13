@@ -56,7 +56,7 @@
   
   .anime-card {
     flex: 0 0 calc(20% - 20px);
-    background-color: #fff;
+    background-color: beige;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
