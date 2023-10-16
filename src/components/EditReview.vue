@@ -29,7 +29,7 @@ export default {
   mounted() {
     const route = useRoute();
     this.review.id = route.params.id;
-    fetch(`http://localhost:4000/review/single/${route.params.id}`)
+    fetch(`${process.env.VUE_APP_BACKEND_API}/review/single/${route.params.id}`)
       .then((response) => response.json())
       .then((result) => {
         this.review = result;
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     saveReview: function () {
-      fetch(`http://localhost:4000/review/single/${this.review._id}`, {
+      fetch(`${process.env.VUE_APP_BACKEND_API}/review/single/${this.review._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

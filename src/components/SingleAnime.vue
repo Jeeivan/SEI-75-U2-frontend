@@ -65,7 +65,7 @@ export default {
       this.userName = userData.given_name;
       this.userEmail = userData.email;
     }
-    fetch(`http://localhost:4000/anime/${route.params.id}`)
+    fetch(`${process.env.VUE_APP_BACKEND_API}/anime/${route.params.id}`)
       .then((response) => response.json())
       .then((result) => {
         this.animes = result;
@@ -81,7 +81,7 @@ export default {
       this.showReviews = !this.showReviews;
     },
     fetchReviews() {
-      fetch(`http://localhost:4000/${this.id}/reviews`)
+      fetch(`${process.env.VUE_APP_BACKEND_API}/${this.id}/reviews`)
         .then((response) => response.json())
         .then((result) => {
           this.reviews = result;
@@ -91,7 +91,7 @@ export default {
         });
     },
     deleteReview(reviewId) {
-      fetch(`http://localhost:4000/review/${reviewId}`, {
+      fetch(`${process.env.VUE_APP_BACKEND_API}/review/${reviewId}`, {
         method: "DELETE",
       })
         .then(() => {

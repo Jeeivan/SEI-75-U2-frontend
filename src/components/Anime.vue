@@ -22,7 +22,7 @@ export default {
     animes: [],
   }),
   mounted() {
-    fetch("http://localhost:4000/anime")
+    fetch(`${process.env.VUE_APP_BACKEND_API}/anime`)
       .then((response) => response.json())
       .then((result) => {
         this.animes = result;

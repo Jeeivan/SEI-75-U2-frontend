@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     fetchAnimeTitles() {
-      fetch("http://localhost:4000/anime")
+      fetch(`${process.env.VUE_APP_BACKEND_API}/anime`)
         .then((res) => res.json())
         .then((data) => {
           this.animes = data;
@@ -93,7 +93,7 @@ export default {
 
       // console.log(`New Review ${this.review.name} - ${this.review.date} - ${this.review.rating} - ${this.review.text}`);
       // console.log(this.userEmail);
-      fetch(`http://localhost:4000/addReview`, {
+      fetch(`${process.env.VUE_APP_BACKEND_API}/addReview`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

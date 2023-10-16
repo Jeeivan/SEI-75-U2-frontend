@@ -43,7 +43,7 @@ export default {
   methods: {
     saveAnime() {
       // console.log(`New Anime ${this.anime.name} - ${this.anime.imageURL} - ${this.anime.description}`);
-      fetch(`http://localhost:4000/addAnime`, {
+      fetch(`${process.env.VUE_APP_BACKEND_API}/addAnime`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

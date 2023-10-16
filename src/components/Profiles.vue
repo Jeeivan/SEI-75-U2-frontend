@@ -31,7 +31,7 @@ export default {
     profiles: [],
   }),
   mounted() {
-    fetch("http://localhost:4000/profiles")
+    fetch(`${process.env.VUE_APP_BACKEND_API}/profiles`)
       .then((response) => response.json())
       .then((result) => {
         this.profiles = result;

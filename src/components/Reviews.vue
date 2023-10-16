@@ -52,7 +52,7 @@ export default {
     filteredReviews: [],
   }),
   mounted() {
-    fetch("http://localhost:4000/reviews")
+    fetch(`${process.env.VUE_APP_BACKEND_API}/reviews`)
       .then((response) => response.json())
       .then((result) => {
         this.reviews = result;
