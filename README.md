@@ -97,4 +97,29 @@ Have Reviews show user name and their google login logo
 Have user schema have given name and logo and have this called 
 Create own anime 
 
+## Challenges
+
+I encountered an issue where the create review would appear even though I was logged out but once I refreshed the page it disappeared like it should. To fix this as shown in the code below I used the location.reload() to refresh the page automatically every time the user would log in or out.
+After a lot of trouble trying to add the ID of the user I was able to fix this issue by changing it so that the email of the user is referenced instead here rather than ID and this way I could still reference the user through their email as this is still unique to that individual user.
+[Insert screenshots below]
+
+## Wins
+
+- I had a lot of struggle with being able to filter through my reviews but after doing some research into the filter method I was happy I was able to resolve this
+[Insert Screenshot below]
+
+## Key Learnings/Takeaways
+
+- I have much more confidence in using APIs and incorporating them in my work
+- I am confident in being able to use a node.js environment
+- I am confident in my skills to use a database and being able to access information from that database to find specific data 
+- I am also confident in being able to link databases together by using referencing
+
+## Future Improvements
+
+- To use a wireframe to have a set lay out for my website and be able to add to this to make building the website more efficient
+- To use an API for my animes page so that I would not need to add in every anime on the page and the API will be able to fetch a vast amount of animes for the user to see
+- Add a search bar within the anime page so if there were a large amount of animes a user would be able to easily access the anime they would like by a search bar rather than scrolling through all the animes on the page
+
+
 
