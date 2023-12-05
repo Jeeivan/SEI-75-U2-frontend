@@ -97,6 +97,75 @@ Have Reviews show user name and their google login logo
 Have user schema have given name and logo and have this called 
 Create own anime 
 
+## Build Process
+
+**Day 1**
+
+In the development journey of this project, I successfully set up both Express and Vue components, skillfully crafting the basic structure for each page. It was a satisfying process, marking the foundational stages of the project.
+
+Subsequently, I proceeded to define the schemas for both anime and reviews, a meticulous task that laid the groundwork for the app's structure and data organization.
+
+A notable achievement was the seamless referencing of the anime ID within the reviews schema. This integration played a crucial role in establishing a smooth connection between anime pages and their corresponding reviews, significantly improving user navigation.
+
+However, a unique challenge emerged today. I encountered difficulties incorporating the user ID into the review schema. Despite the hurdle, I approached it with determination, recognizing the importance of overcoming this obstacle for the app's overall functionality.
+
+[Insert Screenshot]
+
+During the development process, I took satisfaction in successfully implementing the star rating feature on my page. This enhancement not only added visual appeal but also made it more user-friendly, allowing users to easily input their ratings.
+
+Furthermore, I'm content with the functionality that allows me to display individual anime pages. By fetching data from MongoDB and utilizing the unique ID of each anime, I've successfully created a distinct page for each anime, enhancing the overall user experience.
+
+**Day 2**
+
+I achieved a significant milestone by getting the edit function to work seamlessly. This accomplishment marked the completion of full CRUD data operations on my website, enabling users to create, update, and delete posts.
+
+I'm particularly pleased with the implementation of an "if" function that restricts editing and deletion privileges to the user who created the review. This ensures that only the original reviewer can modify or delete their content. The mechanism relies on referencing the user's email within each review and comparing it to the email retrieved from the Google login data, providing a secure and personalised experience for users.
+
+[Insert Screenshot]
+
+As I delved into the styling phase of my website, I found satisfaction in the visual appeal achieved on my anime page. The effort put into refining the aesthetics of that section paid off, creating a visually pleasing and engaging experience for users.
+
+However, a critical self-assessment revealed dissatisfaction with the appearance of my homepage. Recognizing the importance of a captivating and user-friendly entry point, I acknowledged the need for improvement. Enhancing the visual appeal of the homepage became a priority, as I aimed to create a more attractive and welcoming environment for users.
+
+[Insert Screenshot]
+
+**Day 3**
+
+I'm really pleased with the way I've styled my pages. It was important to me that the individual anime pages are easy for the reader to view, and I feel like I've achieved that goal. As I was working on it, I found joy in the process of making it visually appealing and user-friendly.
+
+I also tackled the challenge of integrating an external API for the anime news page. It took some effort, but I managed to get it working seamlessly. Now, visitors to my website can stay updated with the latest anime news right on the platform. It was a rewarding experience, and I'm proud of the additional functionality it brings.
+
+[Insert Screenshot]
+
+Working with APIs was a bit intimidating at first, but I'm happy to say that I gained valuable experience through the process. It turned out to be much more manageable than I initially thought, and I can see now how it enhances the overall functionality of my website. Learning and adapting to these new aspects has been a great journey, and I'm content with the progress I've made.
+
+I am pleased with how I was able to link my reviews page to each individual anime page by adding router links, utilising a straightforward approach similar to what I have employed in other pages. This process was facilitated by referencing the unique anime ID within my reviews collection. By establishing a clear connection between the anime ID and the reviews, the website seamlessly navigates users from an anime's main page to its corresponding reviews, enhancing the overall user experience.
+
+[Insert Screenshot]
+
+By adding these links within the reviews page made it easier for the user to interact with the page and means they have to use less clicks instead of going to the anime page and then selecting the specific anime the user would like to see based on the review they saw. I also added in the users email within the reviews so it was clear that different users have left their reviews.
+
+[Insert Screenshot]
+
+**Day 4**
+
+- I updated my nav bar to show the users profile image and I also added a new page to my nav that allows user to add their own anime
+- I found it quite easy to add in the add anime page as I already had a add review page so I was able to use many of the same components front there and change it around so that it adds the information to the anime schema
+[Insert Screenshot]
+- I also updated my reviews to have each review show the name of the user who made the review alongside their google profile picture, I did this as I believe it makes it more friendly for the viewer to see all users profile pics and names rather than their email
+- To do this I just needed to update my review schemas to get the user name and profile picture from the cookie when they are making the review
+[Insert Screenshot]
+
+**Day 5**
+
+- On this day I was able to create a new page for profiles which I was pleased with as this allows for all users to see anyone who has logged in to the website
+- To add this profile page I needed to add more information into my user schema so that I would be able to access the user’s name and profile picture, this was done as shown below
+[Insert Screenshot]
+- I then used the information from the user collection by using a get in the back end and then fetched the information from the front end to display the profiles on the profiles page as shown
+[Insert Screenshot]
+- I am also pleased with how my nav bar looks after I updated the styling for it to add the icons to it, along with the user’s profile picture and name to make the experience more personal to them when they are using the website
+[Insert Screenshot]
+
 ## Challenges
 
 I encountered an issue where the create review would appear even though I was logged out but once I refreshed the page it disappeared like it should. To fix this as shown in the code below I used the location.reload() to refresh the page automatically every time the user would log in or out.
