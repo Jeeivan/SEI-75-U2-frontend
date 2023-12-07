@@ -1,5 +1,7 @@
 # SEI Unit 2 Project ReadMe
 
+![screenshot of webstie](anime.png)
+
 ## Project Description
 
 About halfway through the General Assembly Software Engineering Immersive course, we embarked on our second project. After two weeks of gaining experience with Node.js, Express, MongoDB, and Vue.js, we were now tasked with the challenge of applying our newfound knowledge to create our own website. I decided to focus on the topic of anime, as it's a subject I have a deep passion for. My primary goal was to develop a platform where anime enthusiasts could discover their favourite shows and share their own reviews, while also exploring the opinions of fellow fans.
