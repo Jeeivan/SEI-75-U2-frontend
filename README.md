@@ -81,7 +81,7 @@ Have one collection for user- have their name and last login
 Have one collection for anime titles
 Have one collection for reviews which will reference that anime
 
-[Insert screenshot of excalidraw database here]
+![plan](plan.png)
 
 **Vue Files-**
 Landing Page
@@ -121,7 +121,7 @@ A notable achievement was the seamless referencing of the anime ID within the re
 
 However, a unique challenge emerged today. I encountered difficulties incorporating the user ID into the review schema. Despite the hurdle, I approached it with determination, recognizing the importance of overcoming this obstacle for the app's overall functionality.
 
-[Insert Screenshot]
+![mongoDb data](day1.png)
 
 During the development process, I took satisfaction in successfully implementing the star rating feature on my page. This enhancement not only added visual appeal but also made it more user-friendly, allowing users to easily input their ratings.
 
@@ -133,13 +133,16 @@ I achieved a significant milestone by getting the edit function to work seamless
 
 I'm particularly pleased with the implementation of an "if" function that restricts editing and deletion privileges to the user who created the review. This ensures that only the original reviewer can modify or delete their content. The mechanism relies on referencing the user's email within each review and comparing it to the email retrieved from the Google login data, providing a secure and personalised experience for users.
 
-[Insert Screenshot]
+```
+<div v-if="review.user === userEmail" class="review-actions">
+<button @click="deleteReview(review._id)">Delete Review</button>
+<router-link :to="`/review/edit/${review._id}`">
+<button>Edit Review</button></router-link>
+```
 
 As I delved into the styling phase of my website, I found satisfaction in the visual appeal achieved on my anime page. The effort put into refining the aesthetics of that section paid off, creating a visually pleasing and engaging experience for users.
 
 However, a critical self-assessment revealed dissatisfaction with the appearance of my homepage. Recognizing the importance of a captivating and user-friendly entry point, I acknowledged the need for improvement. Enhancing the visual appeal of the homepage became a priority, as I aimed to create a more attractive and welcoming environment for users.
-
-[Insert Screenshot]
 
 **Day 3**
 
