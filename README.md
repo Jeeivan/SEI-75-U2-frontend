@@ -229,23 +229,87 @@ export default {
 **Day 5**
 
 - On this day I was able to create a new page for profiles which I was pleased with as this allows for all users to see anyone who has logged in to the website
-- To add this profile page I needed to add more information into my user schema so that I would be able to access the user’s name and profile picture, this was done as shown below
-[Insert Screenshot]
-- I then used the information from the user collection by using a get in the back end and then fetched the information from the front end to display the profiles on the profiles page as shown
-[Insert Screenshot]
+- To add this profile page I needed to add more information into my user schema so that I would be able to access the user’s name and profile picture
+
+```
+app.post("/user/login", async (req, res) => {
+  console.log(req.body);
+  const now = new Date();
+  if ((await User.count({ userEmail: req.body.email })) === 0) {
+    const newuser = new User({
+      userEmail: req.body.email,
+      name: req.body.name,
+      img: req.body.img,
+      lastLogin: now,
+    });
+    newuser.save().then(() => {
+      res.sendStatus(200);
+    });
+  } else {
+    await User.findOneAndUpdate(
+      { userEmail: req.body.email },
+      { name: req.body.name },
+      { img: req.body.img },
+      { lastLogin: now }
+    );
+    res.sendStatus(200);
+  }
+});
+```
+
+- I then used the information from the user collection by using a get in the back end and then fetched the information from the front end to display the profiles on the profiles page
 - I am also pleased with how my nav bar looks after I updated the styling for it to add the icons to it, along with the user’s profile picture and name to make the experience more personal to them when they are using the website
-[Insert Screenshot]
+![profile](profile.png)
 
 ## Challenges
 
 I encountered an issue where the create review would appear even though I was logged out but once I refreshed the page it disappeared like it should. To fix this as shown in the code below I used the location.reload() to refresh the page automatically every time the user would log in or out.
 After a lot of trouble trying to add the ID of the user I was able to fix this issue by changing it so that the email of the user is referenced instead here rather than ID and this way I could still reference the user through their email as this is still unique to that individual user.
-[Insert screenshots below]
+
+```
+  methods: {
+    callback: function (response) {
+      this.isLoggedIn = true;
+      const userData = decodeCredential(response.credential);
+      this.userName = userData.given_name;
+      this.$cookies.set("user_session", response.credential);
+      location.reload();
+      fetch(`${process.env.VUE_APP_BACKEND_API}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: userData.email,
+        }),
+      }).then(() => {
+        console.log("session saved");
+      });
+    },
+    handleLogOut: function () {
+      googleLogout();
+      this.$cookies.remove("user_session");
+      this.isLoggedIn = false;
+      location.reload();
+    },
+  },
+};
+```
 
 ## Wins
 
 - I had a lot of struggle with being able to filter through my reviews but after doing some research into the filter method I was happy I was able to resolve this
-[Insert Screenshot below]
+
+```
+  methods: {
+    filterReviews(rating) {
+      rating = parseInt(rating);
+      this.filteredReviews = this.reviews.filter(
+        (review) => parseInt(review.rating) === rating
+      );
+    },
+  },
+```
 
 ## Key Learnings/Takeaways
 
