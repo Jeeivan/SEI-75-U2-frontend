@@ -168,10 +168,63 @@ By adding these links within the reviews page made it easier for the user to int
 
 - I updated my nav bar to show the users profile image and I also added a new page to my nav that allows user to add their own anime
 - I found it quite easy to add in the add anime page as I already had a add review page so I was able to use many of the same components front there and change it around so that it adds the information to the anime schema
-[Insert Screenshot]
+  
+```
+app.post("/addAnime", async (req, res) => {
+  try {
+    const data = req.body;
+    // console.log(data);
+    const anime = new Anime({
+      name: data.name,
+      imageURL: data.imageURL,
+      description: data.description,
+    });
+    await anime.save();
+    res.sendStatus(200);
+  } catch (err) {
+    console.log("ERROR MESSAGE HERE ->", err.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+```
+
 - I also updated my reviews to have each review show the name of the user who made the review alongside their google profile picture, I did this as I believe it makes it more friendly for the viewer to see all users profile pics and names rather than their email
 - To do this I just needed to update my review schemas to get the user name and profile picture from the cookie when they are making the review
-[Insert Screenshot]
+
+```
+export default {
+  name: "MakeReviewVue",
+  data() {
+    return {
+      error: "",
+      review: {
+        animeId: "",
+        date: "",
+        rating: 0,
+        text: "",
+      },
+      animes: [],
+      userId: "",
+      isInit: false,
+      isLoggedIn: false,
+      userName: "",
+      userEmail: "",
+      userImage: "",
+    };
+  },
+  created() {
+    this.fetchAnimeTitles();
+  },
+  mounted() {
+    if (this.$cookies.isKey("user_session")) {
+      this.isLoggedIn = true;
+      const userData = decodeCredential(this.$cookies.get("user_session"));
+      this.userName = userData.given_name;
+      this.userEmail = userData.email;
+      this.userImage = userData.picture;
+    }
+  }
+```
 
 **Day 5**
 
