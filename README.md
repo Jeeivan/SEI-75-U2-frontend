@@ -150,17 +150,19 @@ I'm really pleased with the way I've styled my pages. It was important to me tha
 
 I also tackled the challenge of integrating an external API for the anime news page. It took some effort, but I managed to get it working seamlessly. Now, visitors to my website can stay updated with the latest anime news right on the platform. It was a rewarding experience, and I'm proud of the additional functionality it brings.
 
-[Insert Screenshot]
+![news](news.png)
 
 Working with APIs was a bit intimidating at first, but I'm happy to say that I gained valuable experience through the process. It turned out to be much more manageable than I initially thought, and I can see now how it enhances the overall functionality of my website. Learning and adapting to these new aspects has been a great journey, and I'm content with the progress I've made.
 
 I am pleased with how I was able to link my reviews page to each individual anime page by adding router links, utilising a straightforward approach similar to what I have employed in other pages. This process was facilitated by referencing the unique anime ID within my reviews collection. By establishing a clear connection between the anime ID and the reviews, the website seamlessly navigates users from an anime's main page to its corresponding reviews, enhancing the overall user experience.
 
-[Insert Screenshot]
+```
+<h2 class="anime-title">
+<router-link :to="'/anime/' + review.title._id">
+{{ review.title.name }}</router-link>
+```
 
 By adding these links within the reviews page made it easier for the user to interact with the page and means they have to use less clicks instead of going to the anime page and then selecting the specific anime the user would like to see based on the review they saw. I also added in the users email within the reviews so it was clear that different users have left their reviews.
-
-[Insert Screenshot]
 
 **Day 4**
 
